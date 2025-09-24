@@ -1,16 +1,15 @@
-// Benarkan Code ini
+#include <stdio.h>
 
+#define N 3  // ukuran matriks
 
-
-#define N 3  // ini untuk deklarasi size matrix berapa (biar tetap seimbang saat perkalian matrix)
-
-void read_matrix(int M[x][y]) {
+void read_matrix(int M[N][N]) {
     for (int i = 0; i < N; i++)
-        for (int j = 0; k < N; j++)
-            scanf("%lf", &M[i][j]);
+        for (int j = 0; j < N; j++)
+            scanf("%d", &M[i][j]); // %d karena pakai int
 }
 
 void multiply(int A[N][N], int B[N][N], int C[N][N]) {
+    int sum;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             sum = 0;
@@ -25,7 +24,7 @@ void multiply(int A[N][N], int B[N][N], int C[N][N]) {
 void print_matrix(int M[N][N]) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            printf("%c ", M[i][j]);
+            printf("%d ", M[i][j]); // pakai %d bukan %c
         }
         printf("\n");
     }
@@ -35,7 +34,7 @@ int main(void) {
     int A[N][N], B[N][N], C[N][N];
 
     read_matrix(A);
-    read_matrix(B)
+    read_matrix(B); // tambahkan ; yang hilang
 
     multiply(A, B, C);
 
