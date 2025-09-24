@@ -1,28 +1,9 @@
-# Tugas Asistensi Dasprog 2025 : Arrays for C
+Pertama, pada fungsi read_matrix, semula parameternya ditulis int M[x][y]. Karena x dan y tidak pernah didefinisikan, maka kode tersebut akan error saat dikompilasi. Perbaikannya adalah menggunakan int M[N][N] karena ukuran matriks sudah jelas ditentukan lewat #define N 3. Selain itu, format spesifier scanf yang digunakan sebelumnya adalah %lf, padahal tipe data matriks yang kamu deklarasikan adalah int. %lf dipakai untuk double, sehingga harus diganti menjadi %d agar sesuai dengan tipe data integer.
 
-Dalam programming assignment kali ini, Anda diminta untuk membuat program matrix perkalian dengan array.
-Dalam Program ini, kalian hanya perlu membenarkan masalah yang ada, serta menjelaskannya juga.
-sebagai template awal, Anda akan diberikan program yang sudah ada isinya. 
+Kedua, pada bagian perulangan di read_matrix, ada kesalahan penulisan variabel indeks. Kamu menulis for (int j = 0; k < N; j++), padahal seharusnya variabel kondisi adalah j < N bukan k < N. Kesalahan kecil seperti ini akan membuat loop tidak berfungsi dan bisa menimbulkan error kompilasi. Perbaikannya adalah dengan mengganti k < N menjadi j < N.
 
+Ketiga, di dalam fungsi multiply, variabel sum digunakan untuk menampung hasil perkalian elemen matriks, tetapi di kode awal tidak ada deklarasi untuk variabel tersebut. Akibatnya, program tidak akan mengenali sum. Solusinya adalah menambahkan deklarasi int sum; di dalam fungsi sebelum digunakan. Dengan begitu, sum bisa diinisialisasi ulang menjadi nol di setiap iterasi j.
 
-## Langkah-Langkah yang perlu dilakukan
+Keempat, pada fungsi print_matrix, format output awal adalah %c, yang berarti karakter ASCII. Hal ini akan membuat hasilnya aneh, karena bilangan bulat matriks akan ditampilkan sebagai karakter. Perbaikannya adalah mengganti menjadi %d sehingga output yang ditampilkan benar-benar berupa angka.
 
-1. Clone Repository ini ke dalam github kalian (Link Repo = https://github.com/DarrenCasper/Tugas-Asistensi-Dasar-Pemgrograman-2-2025.git).
-2. Deklarasi seluruh variabel yang dibutuhkan di kode tersebut.
-3. Perbaiki setiap masalah yang ada.
-4. Setelah sudah, buat laporan dengan nama REPORT.md untuk mencatat log setiap commit yang kalian lakukan. (ingat .md bukan nama repo itu format penulisan)
-5. Push kembali ke repo kalian dengan format NRP-Nama-Modul brp-Tugas Asistensi (pastikan ini public).
-6. Dalam group kalian, kirim ke aku link github masing-masing (pake perwakilan satu orang saja).
-
-## Laporan 
-
-Silahkan membuat laporan tentang program yang Anda kerjakan dengan mengubah file REPORT.md dengan memperhatikan syntax yang digunakan untuk style dari setiap tulisan, image jika ada, dan contoh beberapa input/output.
-
-## Submit Tugas
-
-Seluruh tugas disubmit ke Github dengan menggunakan mekanisme push sesuai dengan repository yang telah ditentukan.
-
-### Bonus
-Kalau kalian bisa menjelaskan (yapping) tentang materi kalian dengan bagus auto 100
-
-![yapper](img/kitasan-black-kitasan.gif)
+Terakhir, di dalam fungsi main, setelah pemanggilan read_matrix(B) ada tanda titik koma (;) yang hilang. Tanpa tanda titik koma ini, program akan error saat dikompilasi. Dengan menambahkan tanda tersebut, program bisa berjalan normal.
